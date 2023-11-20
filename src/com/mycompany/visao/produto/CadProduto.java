@@ -4,18 +4,217 @@
  */
 package com.mycompany.visao.produto;
 
+import com.mycompany.dao.DaoCategoria;
+import com.mycompany.dao.DaoEstado;
+import com.mycompany.dao.DaoMarca;
+import com.mycompany.dao.DaoProduto;
+import com.mycompany.ferramentas.Constantes;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
+import com.mycompany.modelo.ModProduto;
+import com.mycompany.visao.cidade.CadCidade;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
  */
 public class CadProduto extends javax.swing.JFrame {
 
+    public CadProduto() {
+        initComponents();
+        
+        carregarMarcas();
+        carregarCategorias();
+        
+        if(!existeDadosTemporarios()){
+            DaoProduto daoProduto = new DaoProduto();
+
+            int id = daoProduto.buscarProximoId(); 
+            if (id > 0)
+                tfId.setText(String.valueOf(id));
+            
+            btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
+            btnExcluir.setVisible(false);
+        }else{
+            btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
+            btnExcluir.setVisible(true);
+        }
+        
+        recuperaIdCategoria();
+        recuperaIdMarca();
+        
+        setLocationRelativeTo(null);
+        
+        tfId.setEnabled(false);
+        
+        tfIdCategoria.setVisible(false);
+        tfIdMarca.setVisible(false);
+    }
+
+    private Boolean existeDadosTemporarios(){        
+        if(DadosTemporarios.tempObject instanceof ModProduto){
+            int id = ((ModProduto) DadosTemporarios.tempObject).getId();
+            int idCategoria = ((ModProduto) DadosTemporarios.tempObject).getIdCategoria();
+            int idMarca = ((ModProduto) DadosTemporarios.tempObject).getIdMarca();
+            String nome = ((ModProduto) DadosTemporarios.tempObject).getNome();
+            String descricao = ((ModProduto) DadosTemporarios.tempObject).getDescricao();
+            Double preco = ((ModProduto) DadosTemporarios.tempObject).getPreco();    
+            
+            tfId.setText(String.valueOf(id));
+            tfIdCategoria.setText(String.valueOf(String.valueOf(idCategoria)));
+            tfIdMarca.setText(String.valueOf(idMarca));
+            tfNome.setText(nome);
+            tfDescricao.setText(descricao);
+            tfPreco.setText(String.valueOf(preco));
+            
+            //
+            try{
+                DaoCategoria daoCategoria = new DaoCategoria();
+                ResultSet resultSet = daoCategoria.listarPorId(idCategoria);
+                resultSet.next();
+                String categoria = resultSet.getString("NOME");
+                int index = 0;
+                for(int i = 0; i < jcbCategoria.getItemCount(); i++){
+                    if(jcbCategoria.getItemAt(i).equals(categoria)){
+                        index = i;
+                        break;
+                    }
+                }
+                jcbCategoria.setSelectedIndex(index);
+            }catch(Exception e){}
+            //
+            
+            //
+            try{
+                DaoMarca daoMarca = new DaoMarca();
+                ResultSet resultSet = daoMarca.listarPorId(idMarca);
+                resultSet.next();
+                String marca = resultSet.getString("NOME");
+                int index = 0;
+                for(int i = 0; i < jcbMarca.getItemCount(); i++){
+                    if(jcbMarca.getItemAt(i).equals(marca)){
+                        index = i;
+                        break;
+                    }
+                }
+                jcbMarca.setSelectedIndex(index);
+            }catch(Exception e){}
+            //
+            
+            DadosTemporarios.tempObject = null;
+            
+            return true;
+        }else
+            return false;
+    }
+
+    private void inserir(){
+        DaoProduto daoProduto = new DaoProduto();
+        
+        if (daoProduto.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdCategoria.getText()), Integer.parseInt(tfIdMarca.getText()), tfNome.getText(), tfDescricao.getText(), Double.parseDouble(tfPreco.getText()))){
+            JOptionPane.showMessageDialog(null, "Produto salvo com sucesso!");
+            
+            tfId.setText(String.valueOf(daoProduto.buscarProximoId()));
+            tfNome.setText("");
+            tfDescricao.setText("");
+            tfPreco.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar o Produto!");
+        }
+    }
+    
+    private void alterar(){
+        DaoProduto daoProduto = new DaoProduto();
+        
+        if (daoProduto.alterar(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdCategoria.getText()), Integer.parseInt(tfIdMarca.getText()), tfNome.getText(), tfDescricao.getText(), Double.parseDouble(tfPreco.getText()))){
+            JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
+            
+            tfId.setText(String.valueOf(daoProduto.buscarProximoId()));
+            tfNome.setText("");
+            tfDescricao.setText("");
+            tfPreco.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar o produto!");
+        }
+        
+        ((ListProduto) Formularios.listProduto).listarTodos();
+        
+        dispose();
+    }
+    
+    private void excluir(){
+        DaoProduto daoProduto = new DaoProduto();
+        
+        if (daoProduto.excluir(Integer.parseInt(tfId.getText()))){
+            JOptionPane.showMessageDialog(null, "Estado " + tfNome.getText() + " excluída com sucesso!");
+            
+            tfId.setText("");
+            tfNome.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o estado!");
+        }
+        
+        ((ListProduto) Formularios.listProduto).listarTodos();
+        
+        dispose();
+    }
+    
+    public void carregarCategorias(){
+        try{
+            DaoCategoria daoCategoria = new DaoCategoria();
+
+            ResultSet resultSet = daoCategoria.listarTodos();
+
+            while(resultSet.next())
+                jcbCategoria.addItem(resultSet.getString("NOME"));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void recuperaIdCategoria(){
+        try{
+            DaoCategoria daoCategoria = new DaoCategoria();
+            ResultSet resultSet = daoCategoria.listarPorNome(jcbCategoria.getSelectedItem().toString());
+            
+            resultSet.next();
+            tfIdCategoria.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    public void carregarMarcas(){
+        try{
+            DaoMarca daoMarca = new DaoMarca();
+
+            ResultSet resultSet = daoMarca.listarTodos();
+
+            while(resultSet.next())
+                jcbMarca.addItem(resultSet.getString("NOME"));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void recuperaIdMarca(){
+        try{
+            DaoMarca daoMarca = new DaoMarca();
+            ResultSet resultSet = daoMarca.listarPorNome(jcbMarca.getSelectedItem().toString());
+            
+            resultSet.next();
+            tfIdMarca.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+
     /**
      * Creates new form CadProduto
      */
-    public CadProduto() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +225,196 @@ public class CadProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tfId = new javax.swing.JTextField();
+        tfNome = new javax.swing.JTextField();
+        tfIdCategoria = new javax.swing.JTextField();
+        jcbCategoria = new javax.swing.JComboBox<>();
+        jcbMarca = new javax.swing.JComboBox<>();
+        tfIdMarca = new javax.swing.JTextField();
+        tfDescricao = new javax.swing.JTextField();
+        tfPreco = new javax.swing.JTextField();
+        btnAcao = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("ID");
+
+        jLabel2.setText("ID_CATEGORIA");
+
+        jLabel3.setText("ID_MARCA");
+
+        jLabel4.setText("PRODUTO");
+
+        jLabel5.setText("DESCRIÇÃO");
+
+        jLabel6.setText("PRECO");
+
+        jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acao", "Fps", "DateSim", "Terror", "Rpg" }));
+        jcbCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbCategoriaItemStateChanged(evt);
+            }
+        });
+
+        jcbMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PlayStation", "Nintendo", "Xbox" }));
+        jcbMarca.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbMarcaItemStateChanged(evt);
+            }
+        });
+
+        btnAcao.setText("Salvar");
+        btnAcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcaoActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAcao)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcluir)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(tfIdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jcbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(tfIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jcbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jcbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfIdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAcao)
+                    .addComponent(btnExcluir))
+                .addGap(21, 21, 21))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCategoriaItemStateChanged
+        recuperaIdCategoria();
+    }//GEN-LAST:event_jcbCategoriaItemStateChanged
+
+    private void jcbMarcaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMarcaItemStateChanged
+        recuperaIdMarca();
+    }//GEN-LAST:event_jcbMarcaItemStateChanged
+
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
+       if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+            inserir();
+            
+            if(Formularios.cadCategoria != null){
+                ((CadProduto) Formularios.cadProduto).carregarCategorias();
+                dispose();
+            }else if(Formularios.cadMarca != null){
+                ((CadProduto) Formularios.cadProduto).carregarMarcas();
+                dispose();
+            }
+        }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+            alterar(); 
+    }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja realmente excluir o pais " + tfNome.getText() + "?");
+        
+        if(escolha == JOptionPane.YES_OPTION)
+            excluir();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +452,22 @@ public class CadProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcao;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jcbCategoria;
+    private javax.swing.JComboBox<String> jcbMarca;
+    private javax.swing.JTextField tfDescricao;
+    private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfIdCategoria;
+    private javax.swing.JTextField tfIdMarca;
+    private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfPreco;
     // End of variables declaration//GEN-END:variables
 }
