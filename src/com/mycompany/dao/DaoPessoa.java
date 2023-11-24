@@ -15,7 +15,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public Boolean inserir(int id, int idEndereco, String nome, String sobrenome, String genero, String telefone, String email, String cpf, String cartaocreditoultimosquatrodigit, String cartaocreditonomedotitular, String cartaocreditodatavencimento, String usuario, String senha){
         try{
-            sql = "INSERT INTO PESSOA (ID, ID_ENDERECO, NOME, SOBRENOME, GENERO, TELEFONE, EMAIL, CPF, CARTAOCREDITOULTIMOSQUATRODIGIT, CARTAOCREDITONOMEDOTITULAR, CARTAOCREDITODATAVENCIMENTO, USUARIO, SENHA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO PESSOA (ID, ID_ENDERECO, NOME, SOBRENOME, GENERO, TELEFONE, EMAIL, CPF, CARTAOCREDITOULTIMOSQUATRODIGIT, CARTAOCREDITONOMEDOTITULAR, CARTAOCREDITODATAVENCIMENTO, USUARIO, SENHA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -48,7 +48,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setInt(13, id);
+            getStatement().setInt(12, id);
             getStatement().setInt(1, idEndereco);
             getStatement().setString(2, nome);
             getStatement().setString(3, sobrenome);
@@ -120,11 +120,13 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
+                "   P.ID_ENDERECO AS ID_ENDERECO,   " +
+                "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
@@ -157,11 +159,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
                 "   P.ID_ENDERECO AS ID_ENDERECO,   " +
                 "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
@@ -186,8 +188,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public ResultSet listarPorRua(String rua){
         try{
-            sql = 
-                " SELECT                            " +
+            sql =
                 " SELECT                            " +
                 "   P.ID AS ID,                     " +
                 "   C.NOME AS CIDADE,               " +
@@ -200,11 +201,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
                 "   P.ID_ENDERECO AS ID_ENDERECO,   " +
                 "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
@@ -242,11 +243,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
                 "   P.ID_ENDERECO AS ID_ENDERECO,   " +
                 "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
@@ -284,13 +285,13 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
                 "   P.ID_ENDERECO AS ID_ENDERECO,   " +
-                "   E.ID AS ID_ENDERECO             " +
+                "   E.ID AS ID_ENDERECO             " +    
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
@@ -326,11 +327,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA, " +
                 "   P.ID_ENDERECO AS ID_ENDERECO,   " +
                 "   E.ID AS ID_ENDERECO             " +
                 " FROM                              " +
@@ -368,11 +369,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
@@ -408,10 +409,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
                 "    P.SENHA AS SENHAZINHA" +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -448,10 +449,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
                 "    P.SENHA AS SENHAZINHA" +
                 " FROM                              " +
                 "   PESSOA P                        " +
@@ -488,9 +489,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA" +    
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
@@ -510,7 +513,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorUsuario(String usuario, boolean buscaParcial){
+    public ResultSet listarPorUsuario(String usuario){
         try{
             sql = 
                 " SELECT                            " +
@@ -525,26 +528,24 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "   P.TELEFONE AS TELEFONE,         " +
                 "   P.EMAIL AS EMAIL,               " +
                 "   P.CPF AS CPF,                   " +
-                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT" +
-                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR" +
-                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO" +
-                "    P.USUARIO AS USUARIOZINHO" +
+                "    P.CARTAOCREDITOULTIMOSQUATRODIGIT AS CARTCREDITULTQUATRODIGIT, " +
+                "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
+                "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
+                "    P.USUARIO AS USUARIOZINHO, " +
+                "    P.SENHA AS SENHAZINHA" +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +
                 "   E.ID = P.ID_ENDERECO            " +
                 " JOIN CIDADE C ON                  " +
                 "   C.ID = E.ID_CIDADE              " +
-                " WHERE P.USUARIO LIKE ?              " ;
+                " WHERE P.USUARIO LIKE ?            " ;
             
-            setStatement(getConexao().prepareStatement(sql));
+                setStatement(getConexao().prepareStatement(sql));
             
-            if(buscaParcial)
                 getStatement().setString(1, usuario + "%");
-            else
-                getStatement().setString(1, usuario);
             
-            setResultado(getStatement().executeQuery());
+                setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

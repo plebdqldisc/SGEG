@@ -23,7 +23,7 @@ public class ModPessoa {
     private String usuario;
     private String senha;
     
-    public ModPessoa(int id, int idEndereco, String nome, String sobrenome, String genero, String telefone, String email, String cpf, String cartaocreditoultimosquatrodigit, String cartaocreditonomedotitular, String cartaocreditodatavencimento) {
+    public ModPessoa(int id, int idEndereco, String nome, String sobrenome, String genero, String telefone, String email, String cpf, String cartaocreditoultimosquatrodigit, String cartaocreditonomedotitular, String cartaocreditodatavencimento, String usuario, String senha) {
         this.id = id;
         this.idEndereco = idEndereco;
         this.nome = nome;
@@ -31,6 +31,7 @@ public class ModPessoa {
         this.genero = genero;
         this.telefone = telefone;
         this.email = email;
+        this.cpf = cpf;
         this.cartaocreditoultimosquatrodigit = cartaocreditoultimosquatrodigit;
         this.cartaocreditonomedotitular = cartaocreditonomedotitular;
         this.cartaocreditodatavencimento = cartaocreditodatavencimento;
@@ -101,7 +102,7 @@ public class ModPessoa {
         return cpf;
     }
 
-    public void setCpf(String Cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
         
@@ -127,6 +128,22 @@ public class ModPessoa {
     
     public void setcartaocreditodatavencimento(String cartaocreditodatavencimento) {
         this.cartaocreditodatavencimento = cartaocreditodatavencimento;
+    }
+    
+    public String getUsuario() {
+        return usuario;
+    }
+    
+    public void setUsuario(String usuario) {
+         this.usuario = usuario;
+    }
+    
+    public String getSenha() {
+        return senha;
+    }
+    
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
      @Override

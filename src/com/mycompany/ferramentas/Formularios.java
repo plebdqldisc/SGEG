@@ -38,6 +38,6 @@ public class Formularios {
     
     public static JFrame listPedido;
     
-        public static JFrame TelaDeLogin;
-    public static JFrame TelaDeCadastro;
+        public static JFrame TelaLogin;
+    public static JFrame TelaSony;
 }

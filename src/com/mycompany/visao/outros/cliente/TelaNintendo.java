@@ -6,14 +6,14 @@ package com.mycompany.visao.outros.cliente;
 
 /**
  *
- * @author arthur.7923
+ * @author Usuario
  */
-public class TelaDeLogin extends javax.swing.JFrame {
+public class TelaNintendo extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaDeLogin
+     * Creates new form TelaNintendo
      */
-    public TelaDeLogin() {
+    public TelaNintendo() {
         initComponents();
     }
 
@@ -59,21 +59,20 @@ public class TelaDeLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaDeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNintendo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaDeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNintendo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaDeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNintendo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaDeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNintendo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaDeLogin().setVisible(true);
+                new TelaNintendo().setVisible(true);
             }
         });
     }
