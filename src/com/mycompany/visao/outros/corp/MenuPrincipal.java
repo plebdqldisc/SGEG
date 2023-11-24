@@ -16,6 +16,7 @@ import com.mycompany.visao.estado.CadEstado;
 import com.mycompany.visao.estado.ListEstado;
 import com.mycompany.visao.marca.CadMarca;
 import com.mycompany.visao.marca.ListMarca;
+import com.mycompany.visao.outros.cliente.MenuPrincipalFrontEnd;
 import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
 import com.mycompany.visao.pessoa.CadPessoa;
@@ -76,6 +77,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miConsultaEndereco = new javax.swing.JMenuItem();
         miConsultaProduto = new javax.swing.JMenuItem();
         miConsultaPessoa = new javax.swing.JMenuItem();
+        Menu3 = new javax.swing.JMenu();
+        miClienteMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,6 +229,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        Menu3.setText("Cliente");
+
+        miClienteMenuPrincipal.setText("MenuPrincipal");
+        miClienteMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miClienteMenuPrincipalActionPerformed(evt);
+            }
+        });
+        Menu3.add(miClienteMenuPrincipal);
+
+        jMenuBar1.add(Menu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,6 +353,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Formularios.listPessoa.setVisible(true);
     }//GEN-LAST:event_miConsultaPessoaActionPerformed
 
+    private void miClienteMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClienteMenuPrincipalActionPerformed
+        if(Formularios.menuPrincipalFrontEnd == null)
+            Formularios.menuPrincipalFrontEnd = new MenuPrincipalFrontEnd();
+        
+        Formularios.menuPrincipalFrontEnd.setVisible(true);
+    }//GEN-LAST:event_miClienteMenuPrincipalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -375,6 +397,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Menu3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -387,6 +410,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCadastroPais;
     private javax.swing.JMenuItem miCadastroPessoa;
     private javax.swing.JMenuItem miCadastroProduto;
+    private javax.swing.JMenuItem miClienteMenuPrincipal;
     private javax.swing.JMenuItem miConsultaCategoria;
     private javax.swing.JMenuItem miConsultaCidade;
     private javax.swing.JMenuItem miConsultaEndereco;

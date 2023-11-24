@@ -24,7 +24,7 @@ public class TelaSony extends javax.swing.JFrame {
      */
     public TelaSony() {
         initComponents();
-        Formularios.TelaSony = this;
+        Formularios.telaSony = this;
         
         setLocationRelativeTo(null);
         
@@ -115,7 +115,7 @@ public class TelaSony extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProduto = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -160,7 +160,7 @@ public class TelaSony extends javax.swing.JFrame {
                         .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(btnAcao)
                 .addGap(14, 14, 14))
         );
@@ -178,7 +178,7 @@ public class TelaSony extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,15 +227,16 @@ public class TelaSony extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -250,7 +251,7 @@ public class TelaSony extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -286,9 +287,9 @@ public class TelaSony extends javax.swing.JFrame {
                 DadosTemporarios.categoriaProdutoVenda = categoria;
                 DadosTemporarios.marcaProdutoVenda = marca;
                 
-                if (Formularios.TeladeVenda == null){
-                    Formularios.TeladeVenda = new TeladeVenda();
-                    Formularios.TeladeVenda.setVisible(true);
+                if (Formularios.teladeVenda == null){
+                    Formularios.teladeVenda = new TeladeVenda();
+                    Formularios.teladeVenda.setVisible(true);
                 }else{
                     int escolha = 
                         JOptionPane.showConfirmDialog(
@@ -296,13 +297,13 @@ public class TelaSony extends javax.swing.JFrame {
                             "Existe uma compra em andamento, deseja cancelá-la?");
                     
                     if(escolha == JOptionPane.YES_OPTION){
-                        Formularios.TeladeVenda.dispose();
-                        Formularios.TeladeVenda = null;
+                        Formularios.teladeVenda.dispose();
+                        Formularios.teladeVenda = null;
 
-                        Formularios.TeladeVenda = new TeladeVenda();
-                        Formularios.TeladeVenda.setVisible(true);
+                        Formularios.teladeVenda = new TeladeVenda();
+                        Formularios.teladeVenda.setVisible(true);
                     }else{
-                        Formularios.TeladeVenda.setVisible(true);
+                        Formularios.teladeVenda.setVisible(true);
                     }
                 }
             }

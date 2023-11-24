@@ -28,7 +28,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     public MenuPrincipalFrontEnd() {
     initComponents();
         
-        Formularios.MenuPrincipalFrontEnd = this;
+        Formularios.menuPrincipalFrontEnd = this;
         
         setLocationRelativeTo(null);
         
@@ -68,7 +68,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelPesquisa = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        labelSony = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -85,8 +85,18 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelUsuarioLog.setText("Usuário");
 
         labelCadastrar.setText("Cadastre-se  |");
+        labelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelCadastrarMouseClicked(evt);
+            }
+        });
 
         labelEntrar.setText("Entrar");
+        labelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelEntrarMouseClicked(evt);
+            }
+        });
 
         labelPesquisa.setText("Pesquisa de Produto");
 
@@ -129,10 +139,15 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 51, 204)));
 
-        jLabel5.setBackground(new java.awt.Color(0, 0, 102));
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel5.setText("PlayStation");
-        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelSony.setBackground(new java.awt.Color(0, 0, 102));
+        labelSony.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelSony.setText("PlayStation");
+        labelSony.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelSony.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelSonyMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -140,13 +155,13 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(jLabel5)
+                .addComponent(labelSony)
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel5)
+                .addComponent(labelSony)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -263,6 +278,45 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void labelSonyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSonyMouseClicked
+        if(labelSony.getText().equals(Constantes.LABEL_ENTRAR)){
+            if (Formularios.telaSony == null)
+                Formularios.telaSony = new TelaSony();
+            
+            Formularios.telaSony.setVisible(true);
+        }
+    }//GEN-LAST:event_labelSonyMouseClicked
+
+    private void labelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEntrarMouseClicked
+        if(labelEntrar.getText().equals(Constantes.LABEL_ENTRAR)){
+            if (Formularios.telaLogin == null)
+                Formularios.telaLogin = new TelaLogin();
+
+            Formularios.telaLogin.setModal(true);
+            Formularios.telaLogin.setVisible(true);
+        }else{
+            int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        Constantes.PERGUNTA_ENCERRAR_SESSAO);
+        
+            if(escolha == JOptionPane.YES_OPTION){
+                DadosTemporarios.idUsuarioLogado = -1;
+                DadosTemporarios.usuarioLogado = null;
+                labelEntrar.setText(Constantes.LABEL_ENTRAR);
+                labelUsuarioLog.setText("");
+                labelCadastrar.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_labelEntrarMouseClicked
+
+    private void labelCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCadastrarMouseClicked
+        if (Formularios.cadPessoa == null)
+            Formularios.cadPessoa = new CadPessoa();
+
+        Formularios.cadPessoa.setVisible(true);
+    }//GEN-LAST:event_labelCadastrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -303,7 +357,6 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -316,6 +369,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     private javax.swing.JLabel labelCadastrar;
     private javax.swing.JLabel labelEntrar;
     private javax.swing.JLabel labelPesquisa;
+    private javax.swing.JLabel labelSony;
     private javax.swing.JLabel labelUsuarioLog;
     // End of variables declaration//GEN-END:variables
 }

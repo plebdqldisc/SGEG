@@ -10,12 +10,13 @@ import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 /**
  *
  * @author arthur.7923
  */
-public class TelaLogin extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaDeCadastro
@@ -45,7 +46,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         pfSenha = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 204, 204)));
@@ -61,6 +62,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Calibri Light", 0, 12)); // NOI18N
         jLabel3.setText("esqueci a minha senha");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         btnEntrar.setBackground(new java.awt.Color(0, 153, 153));
         btnEntrar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -113,7 +119,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +152,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 DadosTemporarios.idUsuarioLogado = idCliente;
                 DadosTemporarios.usuarioLogado = tfUsuario.getText();
                 
-                ((MenuPrincipalFrontEnd) Formularios.MenuPrincipalFrontEnd).verificaUsuarioLogado();
+                ((MenuPrincipalFrontEnd) Formularios.menuPrincipalFrontEnd).verificaUsuarioLogado();
                 
                 JOptionPane.showMessageDialog(null, "Bem-vindo(a), " + tfUsuario.getText());
                 
@@ -158,6 +164,14 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, Constantes.USUARIO_SENHA_INVALIDOS);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if (Formularios.telaAlteracaodeSenha == null)
+            Formularios.telaAlteracaodeSenha = new TelaAlteracaodeSenha();
+
+        Formularios.telaAlteracaodeSenha.setModal(true);
+        Formularios.telaAlteracaodeSenha.setVisible(true);
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,17 +4,27 @@
  */
 package com.mycompany.visao.outros.cliente;
 
+import com.mycompany.dao.DaoPessoa;
+import com.mycompany.ferramentas.Constantes;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
+import java.sql.ResultSet;
+import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
  */
-public class TelaAlteracaodeSenha extends javax.swing.JFrame {
+public class TelaAlteracaodeSenha extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaAlteracaodeSenha
      */
     public TelaAlteracaodeSenha() {
         initComponents();
+        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +36,170 @@ public class TelaAlteracaodeSenha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfUsuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        pfNovaSenha = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        pfConfirmacaoSenha = new javax.swing.JPasswordField();
+        btnAlterar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setText("USUÁRIO:");
+
+        tfUsuario.setBackground(new java.awt.Color(0, 102, 102));
+        tfUsuario.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setText("EMAIL:");
+
+        tfEmail.setBackground(new java.awt.Color(0, 102, 102));
+        tfEmail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel3.setText("SENHA:");
+
+        pfNovaSenha.setBackground(new java.awt.Color(0, 102, 102));
+        pfNovaSenha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel4.setText("CONFIRMAR SENHA:");
+
+        pfConfirmacaoSenha.setBackground(new java.awt.Color(0, 102, 102));
+        pfConfirmacaoSenha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        btnAlterar.setBackground(new java.awt.Color(0, 204, 204));
+        btnAlterar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnAlterar.setText("ALTERAR");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(tfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addComponent(tfEmail)
+                                .addComponent(jLabel3)
+                                .addComponent(pfNovaSenha))
+                            .addComponent(jLabel4)
+                            .addComponent(pfConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(btnAlterar)))
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfConfirmacaoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(btnAlterar)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        try{
+            DaoPessoa daoPessoa = new DaoPessoa();
+            
+            ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText());
+        
+            resultSet.next();
+            int id = resultSet.getInt("ID");
+            String usuario = resultSet.getString("USUARIO");
+            String email = resultSet.getString("EMAIL");
+            
+            String senha = String.valueOf(pfNovaSenha.getPassword());
+            String confirmacaoSenha = String.valueOf(pfConfirmacaoSenha.getPassword());
+            
+            if(tfUsuario.getText().equals(usuario) && tfEmail.getText().equals(email)){
+                if(!campoSenhaVazio(senha)){
+                    if(senha.equals(confirmacaoSenha)){
+                        if(daoPessoa.alterarSenha(id, String.valueOf(pfNovaSenha.getPassword()))){
+                            JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
+                            dispose();
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, Constantes.CONFIRMACAO_SENHA_DIFERENTE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Informe uma senha!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário e/ou e-mail não encontrado(s)! Por favor, verifique os dados digitados!");
+            }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+            
+    
+    private boolean campoSenhaVazio(String senha){
+        boolean isVazio = true;
+        
+        for(int i = 0; i < senha.length(); i++){
+            if(senha.charAt(i) != ' ')
+                isVazio = false;
+        }
+        
+        return isVazio;
+    }
+    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.telaAlteracaodeSenha = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -68,6 +227,9 @@ public class TelaAlteracaodeSenha extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaAlteracaodeSenha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +240,15 @@ public class TelaAlteracaodeSenha extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField pfConfirmacaoSenha;
+    private javax.swing.JPasswordField pfNovaSenha;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

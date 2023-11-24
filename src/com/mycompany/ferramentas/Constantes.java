@@ -16,6 +16,17 @@ public class Constantes {
     
     
     //front
-    public static
-    public static String CONFIRMACAO_SENHA_DIFERENTE;
+    public static String LABEL_ENTRAR = "Entrar";
+    public static String LABEL_SAIR = "Sair";
+    public static String PERGUNTA_ENCERRAR_SESSAO = "Deseja realmente sair?";
+    public static String PREFIXO_USUARIO_LOGADO = "Usuário logado: ";
+    //
+    
+    //Tela de Login
+    public static String USUARIO_SENHA_INVALIDOS = "Usuário ou senha inválido";
+    //
+    
+    
+    //Tela Cad Pessoa
+    public static String CONFIRMACAO_SENHA_DIFERENTE = "As senhas não são condizentes!";
 }
