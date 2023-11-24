@@ -31,10 +31,7 @@ public class TelaSony extends javax.swing.JFrame {
         if (!BancoDeDadosMySql.conectar()){
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
             System.exit(0);
-        }
-        
-        listarTodos();
-        
+        }   
     }
     
     public void listarTodos(){
@@ -136,6 +133,11 @@ public class TelaSony extends javax.swing.JFrame {
         tfFiltro.setText("Sony");
 
         btnAcao.setText("Atualizar Produtos");
+        btnAcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,6 +200,11 @@ public class TelaSony extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProdutoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableProduto);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -243,6 +250,15 @@ public class TelaSony extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
+            String marcaSelecionada = "Sony";
+            listarPorMarca(marcaSelecionada);
+    }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void tableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProdutoMouseClicked
+        
+    }//GEN-LAST:event_tableProdutoMouseClicked
 
     /**
      * @param args the command line arguments

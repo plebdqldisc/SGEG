@@ -12,13 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/ferramentas/Formularios.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/visao/outros/cliente/TelaSony.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/visao/produto/ListProduto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/visao/outros/cliente/MenuPrincipalFrontEnd.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/visao/outros/cliente/TelaLogin.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/dao/DaoProduto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/SGEG/src/com/mycompany/visao/pessoa/CadPessoa.java</file>
+            <file>file:/C:/Users/arthur.7923/Documents/SGEG/SistemaGerenciamentoEntregaGames/src/com/mycompany/visao/outros/corp/MenuPrincipal.java</file>
+            <file>file:/C:/Users/arthur.7923/Documents/SGEG/SistemaGerenciamentoEntregaGames/src/com/mycompany/visao/endereco/CadEndereco.java</file>
+            <file>file:/C:/Users/arthur.7923/Documents/SGEG/SistemaGerenciamentoEntregaGames/src/com/mycompany/visao/produto/CadProduto.java</file>
         </group>
     </open-files>
 </project-private>
