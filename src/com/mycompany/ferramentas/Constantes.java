@@ -12,5 +12,10 @@ public class Constantes {
     public static String BTN_SALVAR_TEXT = "Salvar";
     public static String BTN_ALTERAR_TEXT = "Alterar";
     public static String BTN_EXCLUIR_TEXT = "Excluir";
+    //
+    
+    
+    //front
+    public static
     public static String CONFIRMACAO_SENHA_DIFERENTE;
 }

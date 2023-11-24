@@ -7,10 +7,12 @@ package com.mycompany.visao.outros.cliente;
 import com.mycompany.dao.DaoProduto;
 import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.ferramentas.Formularios;
+import com.mycompany.modelo.ModProduto;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.mycompany.ferramentas.DadosTemporarios;
 /**
  *
  * @author Usuario
@@ -31,6 +33,9 @@ public class TelaSony extends javax.swing.JFrame {
         if (!BancoDeDadosMySql.conectar()){
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
             System.exit(0);
+            
+            jcbTipoFiltro.setVisible(false);
+            tfFiltro.setVisible(false);
         }   
     }
     
@@ -257,7 +262,53 @@ public class TelaSony extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAcaoActionPerformed
 
     private void tableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProdutoMouseClicked
-        
+        try{
+            if (evt.getClickCount() == 2){
+                ModProduto modProduto = new ModProduto();
+                DaoProduto daoProduto = new DaoProduto();
+                
+                ResultSet resultSet = daoProduto.listarPorMarca(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
+                
+                resultSet.next();
+
+                String categoria = resultSet.getString("CATEGORIA");
+                String marca = resultSet.getString("MARCA");
+                String descricao = resultSet.getString("DESCRICAO");
+                
+                System.out.println(categoria);
+                System.out.println(marca);
+                
+                modProduto.setNome(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
+                modProduto.setPreco(Double.parseDouble(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 1))));
+                modProduto.setDescricao(descricao);
+                
+                DadosTemporarios.tempObject = (ModProduto) modProduto;
+                DadosTemporarios.categoriaProdutoVenda = categoria;
+                DadosTemporarios.marcaProdutoVenda = marca;
+                
+                if (Formularios.TeladeVenda == null){
+                    Formularios.TeladeVenda = new TeladeVenda();
+                    Formularios.TeladeVenda.setVisible(true);
+                }else{
+                    int escolha = 
+                        JOptionPane.showConfirmDialog(
+                            null, 
+                            "Existe uma compra em andamento, deseja cancelá-la?");
+                    
+                    if(escolha == JOptionPane.YES_OPTION){
+                        Formularios.TeladeVenda.dispose();
+                        Formularios.TeladeVenda = null;
+
+                        Formularios.TeladeVenda = new TeladeVenda();
+                        Formularios.TeladeVenda.setVisible(true);
+                    }else{
+                        Formularios.TeladeVenda.setVisible(true);
+                    }
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_tableProdutoMouseClicked
 
     /**

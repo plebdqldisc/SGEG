@@ -38,6 +38,8 @@ public class Formularios {
     
     public static JFrame listPedido;
     
+    public static JFrame MenuPrincipalFrontEnd;
         public static JFrame TelaLogin;
     public static JFrame TelaSony;
+        public static JFrame TeladeVenda;
 }

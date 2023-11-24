@@ -4,6 +4,18 @@
  */
 package com.mycompany.visao.outros.cliente;
 
+
+import com.mycompany.dao.DaoProduto;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
+import com.mycompany.ferramentas.Constantes;
+import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.ferramentas.Formularios;
+import com.mycompany.modelo.ModProduto;
+import com.mycompany.visao.pessoa.CadPessoa;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author arthur.7923
@@ -14,9 +26,31 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
      * Creates new form MenuPrincpalFrontEnd
      */
     public MenuPrincipalFrontEnd() {
-        initComponents();
+    initComponents();
+        
+        Formularios.MenuPrincipalFrontEnd = this;
+        
+        setLocationRelativeTo(null);
+        
+        setExtendedState(MAXIMIZED_BOTH);
+        
+        if (!BancoDeDadosMySql.conectar()){
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
+            System.exit(0);
+        }
+        
+        labelUsuarioLog.setText("");
     }
 
+    public void verificaUsuarioLogado(){
+        if(!DadosTemporarios.usuarioLogado.equals("")){
+            labelUsuarioLog.setText(Constantes.PREFIXO_USUARIO_LOGADO + DadosTemporarios.usuarioLogado);
+            
+            labelEntrar.setText(Constantes.LABEL_SAIR);
+            labelCadastrar.setVisible(false);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,10 +62,10 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelUsuarioLog = new javax.swing.JLabel();
+        labelCadastrar = new javax.swing.JLabel();
+        labelEntrar = new javax.swing.JLabel();
+        labelPesquisa = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -48,13 +82,13 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setText("Usuário");
+        labelUsuarioLog.setText("Usuário");
 
-        jLabel2.setText("Cadastre-se  |");
+        labelCadastrar.setText("Cadastre-se  |");
 
-        jLabel3.setText("Entrar");
+        labelEntrar.setText("Entrar");
 
-        jLabel4.setText("Pesquisa de Produto");
+        labelPesquisa.setText("Pesquisa de Produto");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel10.setText("LAZER GAMES BEAM");
@@ -66,15 +100,15 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
+                    .addComponent(labelPesquisa)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelUsuarioLog)
                         .addGap(377, 377, 377)
                         .addComponent(jLabel10)
                         .addGap(289, 289, 289)
-                        .addComponent(jLabel2)
+                        .addComponent(labelCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
+                        .addComponent(labelEntrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,12 +118,12 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
+                            .addComponent(labelUsuarioLog)
+                            .addComponent(labelCadastrar)
+                            .addComponent(labelEntrar)))
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4))
+                .addComponent(labelPesquisa))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
@@ -268,11 +302,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -283,5 +313,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel labelCadastrar;
+    private javax.swing.JLabel labelEntrar;
+    private javax.swing.JLabel labelPesquisa;
+    private javax.swing.JLabel labelUsuarioLog;
     // End of variables declaration//GEN-END:variables
 }
