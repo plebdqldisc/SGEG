@@ -8,6 +8,7 @@ import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoProduto;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
@@ -25,9 +26,13 @@ public class CadProduto extends javax.swing.JFrame {
     public CadProduto() {
         initComponents();
         
+        if (!BancoDeDadosMySql.conectar()){
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
+            System.exit(0);
+        }
         carregarMarcas();
         carregarCategorias();
-        
+       
         if(!existeDadosTemporarios()){
             DaoProduto daoProduto = new DaoProduto();
 
@@ -41,7 +46,7 @@ public class CadProduto extends javax.swing.JFrame {
             btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
             btnExcluir.setVisible(true);
         }
-        
+            
         recuperaIdCategoria();
         recuperaIdMarca();
         

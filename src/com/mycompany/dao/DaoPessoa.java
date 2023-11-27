@@ -6,6 +6,7 @@ package com.mycompany.dao;
 
 import com.mycompany.ferramentas.BancoDeDadosMySql;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -532,7 +533,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
                 "    P.CARTAOCREDITONOMEDOTITULAR AS CARTCREDITNOMETITULAR, " +
                 "    P.CARTAOCREDITODATAVENCIMENTO AS CARTCREDITDATAVENCIMENTO, " +
                 "    P.USUARIO AS USUARIOZINHO, " +
-                "    P.SENHA AS SENHAZINHA" +
+                "    P.SENHA AS SENHAZINHA " +
                 " FROM                              " +
                 "   PESSOA P                        " +
                 " JOIN ENDERECO E ON                " +

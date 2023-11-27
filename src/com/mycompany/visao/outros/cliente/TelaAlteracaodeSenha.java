@@ -154,7 +154,7 @@ public class TelaAlteracaodeSenha extends javax.swing.JDialog {
         try{
             DaoPessoa daoPessoa = new DaoPessoa();
             
-            ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText());
+        ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText());
         
             resultSet.next();
             int id = resultSet.getInt("ID");
