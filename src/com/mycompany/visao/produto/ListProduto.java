@@ -9,11 +9,13 @@ import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.dao.DaoProduto;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.modelo.ModEstado;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.estado.CadEstado;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,10 +33,14 @@ public class ListProduto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         listarTodos();
+        
+        if (!BancoDeDadosMySql.conectar()) {
+            JOptionPane.showMessageDialog( null, "Não foi possivel conectar ao banco de dados. O sistema será finalizado.");
+            System.exit(0);
+        }
     }
     
     public void listarTodos(){
-
         try{
             //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableProduto.getModel();
@@ -307,10 +313,14 @@ public class ListProduto extends javax.swing.JFrame {
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "CATEGORIA", "MARCA", "NOME", "DESCRICAO", "PRECOMAIORQUE", "PRECOMENORQUE", "PRECOIGUALA" }));
 
-        tfFiltro.setText("Sony");
         tfFiltro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tfFiltroMouseClicked(evt);
+            }
+        });
+        tfFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFiltroActionPerformed(evt);
             }
         });
 
@@ -319,11 +329,11 @@ public class ListProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "ID_CATEG", "ID_ MARCA", "PRODUTO", "DESCRICAO", "PRECO"
+                "ID", "CATEGORIA", "MARCA", "PRODUTO", "DESCRICAO", "PRECO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, true, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -471,6 +481,10 @@ public class ListProduto extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
                }
     }//GEN-LAST:event_tableProdutoMouseClicked
+
+    private void tfFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFiltroActionPerformed
 
     /**
      * @param args the command line arguments

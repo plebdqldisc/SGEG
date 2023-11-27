@@ -27,17 +27,19 @@ public class TelaSony extends javax.swing.JFrame {
         Formularios.telaSony = this;
         
         setLocationRelativeTo(null);
-        
-        setExtendedState(MAXIMIZED_BOTH);
+
+        listarPorMarca(tfFiltro.getText());
         
         if (!BancoDeDadosMySql.conectar()){
             JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
             System.exit(0);
             
+        }   
             jcbTipoFiltro.setVisible(false);
             tfFiltro.setVisible(false);
-        }   
+        
     }
+
     
     public void listarTodos(){
 
@@ -78,7 +80,7 @@ public class TelaSony extends javax.swing.JFrame {
             DaoProduto daoProduto = new DaoProduto();
 
             //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoProduto.listarPorMarca(pMarca);
+            ResultSet resultSet = daoProduto.listarPorMarca("Playstation");
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
@@ -135,8 +137,15 @@ public class TelaSony extends javax.swing.JFrame {
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARCA" }));
 
-        tfFiltro.setText("Sony");
+        tfFiltro.setText("PlayStation");
+        tfFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFiltroActionPerformed(evt);
+            }
+        });
 
+        btnAcao.setBackground(new java.awt.Color(102, 102, 255));
+        btnAcao.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         btnAcao.setText("Atualizar Produtos");
         btnAcao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +169,7 @@ public class TelaSony extends javax.swing.JFrame {
                         .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAcao)
                 .addGap(14, 14, 14))
         );
@@ -258,8 +267,11 @@ public class TelaSony extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-            String marcaSelecionada = "Sony";
-            listarPorMarca(marcaSelecionada);
+            switch (jcbTipoFiltro.getSelectedIndex()){
+                case 0:
+                listarPorMarca(tfFiltro.getText());
+                break;
+            }
     }//GEN-LAST:event_btnAcaoActionPerformed
 
     private void tableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProdutoMouseClicked
@@ -311,6 +323,10 @@ public class TelaSony extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tableProdutoMouseClicked
+
+    private void tfFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFiltroActionPerformed
 
     /**
      * @param args the command line arguments

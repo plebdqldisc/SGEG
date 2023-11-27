@@ -109,7 +109,7 @@ public class DaoProduto extends BancoDeDadosMySql{
                 "   C.NOME AS CATEGORIA,            " +
                 "   M.NOME AS MARCA,                " +
                 "   P.NOME AS NOME,                 " +
-                "   P.DESCRICAO AS DESCRICAO,        " +
+                "   P.DESCRICAO AS DESCRICAO,       " +
                 "   P.PRECO AS PRECO                " +
                 " FROM                              " +
                 "   PRODUTO P                       " +
@@ -259,7 +259,7 @@ public class DaoProduto extends BancoDeDadosMySql{
                 "   C.NOME AS CATEGORIA,            " +
                 "   M.NOME AS MARCA,                " +
                 "   P.NOME AS NOME,                 " +
-                "   P.DESCRICAO AS DESCRICAO,        " +
+                "   P.DESCRICAO AS DESCRICAO,       " +
                 "   P.PRECO AS PRECO                " +
                 " FROM                              " +
                 "   PRODUTO P                       " +

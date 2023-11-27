@@ -100,11 +100,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="tfFiltro">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sony"/>
-          </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfFiltroMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfFiltroActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -119,10 +117,10 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
                     <Column editable="false" title="ID" type="java.lang.Object"/>
-                    <Column editable="false" title="ID_CATEG" type="java.lang.Object"/>
-                    <Column editable="true" title="ID_ MARCA" type="java.lang.Object"/>
+                    <Column editable="false" title="CATEGORIA" type="java.lang.Object"/>
+                    <Column editable="false" title="MARCA" type="java.lang.Object"/>
                     <Column editable="false" title="PRODUTO" type="java.lang.Object"/>
-                    <Column editable="true" title="DESCRICAO" type="java.lang.Object"/>
+                    <Column editable="false" title="DESCRICAO" type="java.lang.Object"/>
                     <Column editable="false" title="PRECO" type="java.lang.Object"/>
                   </Table>
                 </Property>
