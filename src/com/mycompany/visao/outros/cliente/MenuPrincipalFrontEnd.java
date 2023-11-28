@@ -68,9 +68,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         labelSony = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        labelXbox = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        labelNintendo = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -110,10 +110,10 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelPesquisa)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(labelUsuarioLog)
-                        .addGap(377, 377, 377)
-                        .addComponent(jLabel10)
-                        .addGap(289, 289, 289)
+                        .addComponent(labelUsuarioLog, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelCadastrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelEntrar)))
@@ -167,9 +167,14 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 153, 0));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 102, 0)));
 
-        jLabel6.setBackground(new java.awt.Color(0, 102, 51));
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel6.setText("Xbox");
+        labelXbox.setBackground(new java.awt.Color(0, 102, 51));
+        labelXbox.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelXbox.setText("Xbox");
+        labelXbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelXboxMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -177,22 +182,27 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(labelXbox)
                 .addGap(138, 138, 138))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(labelXbox)
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel7.setText("Nintendo");
+        labelNintendo.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelNintendo.setText("Nintendo");
+        labelNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelNintendoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -200,14 +210,14 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(143, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(labelNintendo)
                 .addGap(135, 135, 135))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(labelNintendo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -315,6 +325,20 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         Formularios.cadPessoa.setVisible(true);
     }//GEN-LAST:event_labelCadastrarMouseClicked
 
+    private void labelXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelXboxMouseClicked
+        if (Formularios.telaXbox == null)
+                Formularios.telaXbox = new TelaXbox();
+            
+            Formularios.telaXbox.setVisible(true);
+    }//GEN-LAST:event_labelXboxMouseClicked
+
+    private void labelNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNintendoMouseClicked
+        if (Formularios.telaNintendo == null)
+                Formularios.telaNintendo = new TelaNintendo();
+            
+            Formularios.telaNintendo.setVisible(true);
+    }//GEN-LAST:event_labelNintendoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -355,8 +379,6 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -366,8 +388,10 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel labelCadastrar;
     private javax.swing.JLabel labelEntrar;
+    private javax.swing.JLabel labelNintendo;
     private javax.swing.JLabel labelPesquisa;
     private javax.swing.JLabel labelSony;
     private javax.swing.JLabel labelUsuarioLog;
+    private javax.swing.JLabel labelXbox;
     // End of variables declaration//GEN-END:variables
 }

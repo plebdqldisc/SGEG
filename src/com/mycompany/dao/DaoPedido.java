@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 public class DaoPedido extends BancoDeDadosMySql{
     private String sql;
     
-    public Boolean inserir(int id, int idCliente, int idProduto, String dataPedido, int statusPedido, String enderecoEntrega, Double quantidade){
+    public Boolean inserir(int id, int idCliente, int idProduto, String dataPedido, String statusPedido, String enderecoEntrega, int quantidade){
         try{
             sql = "INSERT INTO PEDIDO (ID, ID_CLIENTE, ID_PRODUTO, DATAPEDIDO, STATUSPEDIDO, ENDERECOENTREGA, QUANTIDADE) VALUES (?, ?, ?, ?, ?, ?, ?)";
             
@@ -23,9 +23,9 @@ public class DaoPedido extends BancoDeDadosMySql{
             getStatement().setInt(2, idCliente);
             getStatement().setInt(3, idProduto);
             getStatement().setString(4, dataPedido);
-            getStatement().setInt(5, statusPedido);
+            getStatement().setString(5, statusPedido);
             getStatement().setString (6, enderecoEntrega);
-            getStatement().setDouble(7, quantidade);
+            getStatement().setInt(7, quantidade);
             
             getStatement().executeUpdate();
             

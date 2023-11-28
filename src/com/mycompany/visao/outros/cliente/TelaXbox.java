@@ -65,7 +65,6 @@ public class TelaXbox extends javax.swing.JFrame {
         }
     }
     
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +86,7 @@ public class TelaXbox extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProduto = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
 

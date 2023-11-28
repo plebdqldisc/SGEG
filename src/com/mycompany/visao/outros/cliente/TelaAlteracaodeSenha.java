@@ -5,6 +5,7 @@
 package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoPessoa;
+import com.mycompany.ferramentas.BancoDeDadosMySql;
 import com.mycompany.ferramentas.Constantes;
 import com.mycompany.ferramentas.DadosTemporarios;
 import com.mycompany.ferramentas.Formularios;
@@ -22,7 +23,13 @@ public class TelaAlteracaodeSenha extends javax.swing.JDialog {
      * Creates new form TelaAlteracaodeSenha
      */
     public TelaAlteracaodeSenha() {
+        if (!BancoDeDadosMySql.conectar()){
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados. O sistema será finalizado.");
+            System.exit(0);
+        }
+        
         initComponents();
+        
         
         setLocationRelativeTo(null);
     }
@@ -154,7 +161,7 @@ public class TelaAlteracaodeSenha extends javax.swing.JDialog {
         try{
             DaoPessoa daoPessoa = new DaoPessoa();
             
-        ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText());
+        ResultSet resultSet = daoPessoa.listarPorUsuario(tfUsuario.getText(), false);
         
             resultSet.next();
             int id = resultSet.getInt("ID");

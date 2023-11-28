@@ -425,7 +425,7 @@ public class ListPessoa extends javax.swing.JFrame {
             DaoPessoa daoPessoa = new DaoPessoa();
 
             //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoPessoa.listarPorUsuario(tfFiltro.getText());
+            ResultSet resultSet = daoPessoa.listarPorUsuario(tfFiltro.getText(), false);
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){

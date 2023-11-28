@@ -88,7 +88,7 @@ public class TelaNintendo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProduto = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 

@@ -514,7 +514,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorUsuario(String usuario){
+    public ResultSet listarPorUsuario(String usuario, boolean buscaParcial){
         try{
             sql = 
                 " SELECT                            " +
@@ -544,8 +544,11 @@ public class DaoPessoa extends BancoDeDadosMySql{
             
                 setStatement(getConexao().prepareStatement(sql));
             
+                if(buscaParcial)
                 getStatement().setString(1, usuario + "%");
-            
+            else
+                getStatement().setString(1, usuario);
+                
                 setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -575,7 +578,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
         
         return getResultado();
     }
-        public int buscarProximoId(){
+    public int buscarProximoId(){
         int id = -1;
         
         try{
