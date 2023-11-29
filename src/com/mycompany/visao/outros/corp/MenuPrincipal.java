@@ -19,6 +19,7 @@ import com.mycompany.visao.marca.ListMarca;
 import com.mycompany.visao.outros.cliente.MenuPrincipalFrontEnd;
 import com.mycompany.visao.pais.CadPais;
 import com.mycompany.visao.pais.ListPais;
+import com.mycompany.visao.pedido.ListPedido;
 import com.mycompany.visao.pessoa.CadPessoa;
 import com.mycompany.visao.pessoa.ListPessoa;
 import com.mycompany.visao.produto.CadProduto;
@@ -77,6 +78,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miConsultaEndereco = new javax.swing.JMenuItem();
         miConsultaProduto = new javax.swing.JMenuItem();
         miConsultaPessoa = new javax.swing.JMenuItem();
+        miConsultaPedido = new javax.swing.JMenuItem();
         Menu3 = new javax.swing.JMenu();
         miClienteMenuPrincipal = new javax.swing.JMenuItem();
 
@@ -227,6 +229,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(miConsultaPessoa);
 
+        miConsultaPedido.setText("Pedido");
+        miConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultaPedidoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(miConsultaPedido);
+
         jMenuBar1.add(jMenu2);
 
         Menu3.setText("Cliente");
@@ -360,6 +370,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Formularios.menuPrincipalFrontEnd.setVisible(true);
     }//GEN-LAST:event_miClienteMenuPrincipalActionPerformed
 
+    private void miConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultaPedidoActionPerformed
+        Formularios.listPedido = new ListPedido();
+        Formularios.listPedido.setVisible(true);
+    }//GEN-LAST:event_miConsultaPedidoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -417,6 +432,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miConsultaEstado;
     private javax.swing.JMenuItem miConsultaMarca;
     private javax.swing.JMenuItem miConsultaPais;
+    private javax.swing.JMenuItem miConsultaPedido;
     private javax.swing.JMenuItem miConsultaPessoa;
     private javax.swing.JMenuItem miConsultaProduto;
     // End of variables declaration//GEN-END:variables

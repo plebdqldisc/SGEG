@@ -208,10 +208,10 @@ public class DaoCidade extends BancoDeDadosMySql{
     }
 
     public int buscarProximoId(){
-        int id = -1;
+        int id = 0;
         
         try{
-            sql = "SELECT (MAX(ID), 0) + 1 FROM CIDADE";
+            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM CIDADE";
             
             setStatement(getConexao().prepareStatement(sql));
             

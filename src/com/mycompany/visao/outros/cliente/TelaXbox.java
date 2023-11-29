@@ -78,7 +78,6 @@ public class TelaXbox extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jcbTipoFiltro = new javax.swing.JComboBox<>();
         tfFiltro = new javax.swing.JTextField();
         btnAcao = new javax.swing.JButton();
@@ -100,10 +99,6 @@ public class TelaXbox extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 102, 0));
         jLabel2.setText("Sessão Xbox");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 0));
-        jLabel3.setText("Voltar");
-
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MARCA" }));
 
         btnAcao.setBackground(new java.awt.Color(153, 255, 51));
@@ -121,16 +116,13 @@ public class TelaXbox extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(78, 78, 78)
-                        .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(78, 78, 78)
+                .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAcao)
                 .addGap(14, 14, 14))
@@ -142,21 +134,18 @@ public class TelaXbox extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAcao))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)))
-                        .addComponent(jLabel3)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
                 .addContainerGap())
         );
 
@@ -240,38 +229,45 @@ public class TelaXbox extends javax.swing.JFrame {
 
     private void tableProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProdutoMouseClicked
         try{
-            if (evt.getClickCount() == 2){
+                if (evt.getClickCount() == 2){
+                int selectedRow = tableProduto.getSelectedRow();
+                if (selectedRow != -1) {
+                    
+                
                 ModProduto modProduto = new ModProduto();
                 DaoProduto daoProduto = new DaoProduto();
-
-                ResultSet resultSet = daoProduto.listarPorMarca(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
-
+                
+                ResultSet resultSet = daoProduto.listarPorNome(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
+                
                 resultSet.next();
 
+                int id  = resultSet.getInt("ID");
                 String categoria = resultSet.getString("CATEGORIA");
                 String marca = resultSet.getString("MARCA");
                 String descricao = resultSet.getString("DESCRICAO");
-
+                
                 System.out.println(categoria);
                 System.out.println(marca);
-
+                
+                modProduto.setId(id);
                 modProduto.setNome(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
-                modProduto.setPreco(Double.parseDouble(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 1))));
-                modProduto.setDescricao(descricao);
-
+                modProduto.setDescricao(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 1)));
+                modProduto.setPreco(Double.parseDouble(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 2))));
+                
+                
                 DadosTemporarios.tempObject = (ModProduto) modProduto;
                 DadosTemporarios.categoriaProdutoVenda = categoria;
                 DadosTemporarios.marcaProdutoVenda = marca;
-
+                
                 if (Formularios.teladeVenda == null){
                     Formularios.teladeVenda = new TeladeVenda();
                     Formularios.teladeVenda.setVisible(true);
                 }else{
-                    int escolha =
-                    JOptionPane.showConfirmDialog(
-                        null,
-                        "Existe uma compra em andamento, deseja cancelá-la?");
-
+                    int escolha = 
+                        JOptionPane.showConfirmDialog(
+                            null, 
+                            "Existe uma compra em andamento, deseja cancelá-la?");
+                    
                     if(escolha == JOptionPane.YES_OPTION){
                         Formularios.teladeVenda.dispose();
                         Formularios.teladeVenda = null;
@@ -281,10 +277,12 @@ public class TelaXbox extends javax.swing.JFrame {
                     }else{
                         Formularios.teladeVenda.setVisible(true);
                     }
+                    
+                    }
                 }
             }
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }//GEN-LAST:event_tableProdutoMouseClicked
 
@@ -327,7 +325,6 @@ public class TelaXbox extends javax.swing.JFrame {
     private javax.swing.JButton btnAcao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

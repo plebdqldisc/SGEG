@@ -44,6 +44,8 @@ public class Formularios {
     public static JFrame telaSony;
         public static JFrame telaXbox;
     public static JFrame telaNintendo;
+        public static JFrame telaSteam;
+    public static JFrame telaPesquisa;
         public static JFrame teladeVenda;
     public static JDialog telaAlteracaodeSenha;
             

@@ -13,9 +13,9 @@ import java.sql.ResultSet;
 public class DaoPedido extends BancoDeDadosMySql{
     private String sql;
     
-    public Boolean inserir(int id, int idCliente, int idProduto, String dataPedido, String statusPedido, String enderecoEntrega, int quantidade){
+    public Boolean inserir(int id, int idCliente, int idProduto, String dataPedido, int quantidade){
         try{
-            sql = "INSERT INTO PEDIDO (ID, ID_CLIENTE, ID_PRODUTO, DATAPEDIDO, STATUSPEDIDO, ENDERECOENTREGA, QUANTIDADE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO PEDIDO (ID, ID_CLIENTE, ID_PRODUTO, DATA_PEDIDO, QUANTIDADE) VALUES (?, ?, ?, ?, ?)";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -23,9 +23,7 @@ public class DaoPedido extends BancoDeDadosMySql{
             getStatement().setInt(2, idCliente);
             getStatement().setInt(3, idProduto);
             getStatement().setString(4, dataPedido);
-            getStatement().setString(5, statusPedido);
-            getStatement().setString (6, enderecoEntrega);
-            getStatement().setInt(7, quantidade);
+            getStatement().setInt(5, quantidade);
             
             getStatement().executeUpdate();
             
@@ -44,8 +42,6 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
                 "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -75,8 +71,6 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
                 "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -109,8 +103,6 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
                 "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
@@ -144,9 +136,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -179,9 +169,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -214,9 +202,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +  
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -249,9 +235,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +  
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -284,9 +268,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -319,9 +301,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -354,9 +334,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +
@@ -389,9 +367,7 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   P.ID AS ID,                       " +
                 "   PES.NOME AS PESSOA,               " +
                 "   PRO.NOME AS PRODUTO,              " +
-                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
-                " P.STATUSPEDIDO AS STATUS_PEDIDO,     " +
-                "    P.ENDERECOENTREGA AS ENDERECO,    " +    
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " + 
                 "   P.QUANTIDADE AS QUANTIDADE,       " +
                 "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
                 " FROM                                " +

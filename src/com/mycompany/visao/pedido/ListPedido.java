@@ -44,12 +44,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
                 }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -73,12 +71,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -103,12 +99,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -133,12 +127,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -163,12 +155,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -193,12 +183,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -223,12 +211,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -253,12 +239,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -283,12 +267,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -314,12 +296,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -344,12 +324,10 @@ public class ListPedido extends javax.swing.JFrame {
                 String pessoa = resultSet.getString(2);
                 String produto = resultSet.getString(3);
                 String dataPedido = resultSet.getString(4);
-                String statuspedido = resultSet.getString(5);
-                String enderecoentrega = resultSet.getString(6);
-                String quantidade = resultSet.getString(7);
-                String total = resultSet.getString(8);
+                String quantidade = resultSet.getString(5);
+                String total = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, statuspedido, enderecoentrega, quantidade, total});
+                defaultTableModel.addRow(new Object[]{id, pessoa, produto, dataPedido, quantidade, total});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -365,7 +343,6 @@ public class ListPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jcbTipoFiltro = new javax.swing.JComboBox<>();
         tfFiltro = new javax.swing.JTextField();
@@ -373,7 +350,7 @@ public class ListPedido extends javax.swing.JFrame {
         tablePedido = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "NOME_PESSOA", "SOBRENOME_PESSOA", "NOME_PRODUTO", "DATA_PEDIDO_MAIOR_QUE", "DATA_PEDIDO_MENOR_QUE", "DATA_PEDIDO_IGUAL_A", "TOTAL_PEDIDO_MAIOR_QUE", "TOTAL_PEDIDO_MENOR_QUE", "TOTAL_PEDIDO_IGUAL_A" }));
 
@@ -382,11 +359,11 @@ public class ListPedido extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "pessoa", "produto", "dataPedido", "statuspedido", "enderecoentrega", "quantidade", "total"
+                "id", "pessoa", "produto", "dataPedido", "quantidade", "total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -411,7 +388,7 @@ public class ListPedido extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(btnBuscar)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1))
@@ -425,37 +402,20 @@ public class ListPedido extends javax.swing.JFrame {
                     .addComponent(tfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(14, 14, 14))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -498,7 +458,6 @@ public class ListPedido extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcbTipoFiltro;

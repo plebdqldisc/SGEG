@@ -1,0 +1,14 @@
+alterações que fiz no banco de dados:
+
+Apaguei Carrinho de Compras.
+
+Apaguei de Pedido: StatusPedido e EnderecoEntrega.
+
+Alterei data_pedido para DATE_TIME(6)
+
+adicionei import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+na tela de vendas.
+
+listPedido não está funcionando como deveria, urgente.
