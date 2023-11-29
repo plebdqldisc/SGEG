@@ -85,7 +85,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelPesquisa.setBackground(new java.awt.Color(255, 255, 255));
         labelPesquisa.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        labelPesquisa.setText("                                                                                     Pesquise o Produto");
+        labelPesquisa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPesquisa.setText("Pesquise o Produto");
+        labelPesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelPesquisaMouseClicked(evt);
@@ -100,18 +102,19 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelPesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel10)
-                .addGap(410, 410, 410))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addComponent(labelPesquisa)
+                .addGap(420, 420, 420))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(labelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(labelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
@@ -154,6 +157,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelXbox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelXbox.setText("Xbox");
         labelXbox.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelXbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelXbox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelXboxMouseClicked(evt);
@@ -184,6 +188,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelNintendo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNintendo.setText("Nintendo");
         labelNintendo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelNintendo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelNintendoMouseClicked(evt);
@@ -196,7 +201,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelNintendo, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(labelNintendo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -218,10 +223,12 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelUsuarioLog.setBackground(new java.awt.Color(255, 255, 255));
         labelUsuarioLog.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelUsuarioLog.setText("Usuário");
+        labelUsuarioLog.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         labelCadastrar.setBackground(new java.awt.Color(255, 255, 255));
         labelCadastrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelCadastrar.setText("Cadastre-se  |");
+        labelCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelCadastrarMouseClicked(evt);
@@ -231,6 +238,7 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         labelEntrar.setBackground(new java.awt.Color(255, 255, 255));
         labelEntrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelEntrar.setText("Entrar");
+        labelEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelEntrarMouseClicked(evt);
@@ -274,7 +282,10 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 51, 102));
 
         labelSteam.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelSteam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelSteam.setText("Steam");
+        labelSteam.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelSteam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelSteam.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelSteamMouseClicked(evt);
@@ -285,16 +296,16 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelSteam)
-                .addGap(475, 475, 475))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelSteam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .addComponent(labelSteam)
+                .addContainerGap()
+                .addComponent(labelSteam, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -210,7 +210,7 @@ public class CadEstado extends javax.swing.JFrame {
 
         jLabel5.setText("ID_PAIS");
 
-        jcbPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brasil", "EUA" }));
+        jcbPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brasil", "EUA", "Canadá", "Reino Unido", "Austrália", "Chile" }));
         jcbPais.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbPaisItemStateChanged(evt);

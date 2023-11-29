@@ -34,9 +34,9 @@ public class TeladeVenda extends javax.swing.JFrame {
         
         calculaTotalCompra(Double.parseDouble(labelPreco.getText()), Integer.parseInt(labelQuantidadeCompra.getText()));
         
-        tfIdPedido.setVisible(true);
-        tfIdProduto.setVisible(true);
-        tfIdCliente.setVisible(true);
+        tfIdPedido.setVisible(false);
+        tfIdProduto.setVisible(false);
+        tfIdCliente.setVisible(false);
     }
 
     private Boolean existeDadosTemporarios(){        

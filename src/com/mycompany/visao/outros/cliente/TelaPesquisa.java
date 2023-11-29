@@ -62,6 +62,31 @@ public class TelaPesquisa extends javax.swing.JFrame {
         }
     }
     
+    public void listarPorCategoria(String pCategoria){
+        try{
+            //Define o model da tabela.
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableProduto.getModel();
+            
+            tableProduto.setModel(defaultTableModel);
+
+            DaoProduto daoProduto = new DaoProduto();
+
+            //Atribui o resultset retornado a uma variável para ser usada.
+            ResultSet resultSet = daoProduto.listarPorCategoria(pCategoria);
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String nome =  resultSet.getString(4);
+                String descricao =  resultSet.getString(5);
+                String preco = resultSet.getString(6);
+                
+                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void listarPorMarca(String pMarca){
         try{
             //Define o model da tabela.
@@ -223,7 +248,7 @@ public class TelaPesquisa extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 204, 255));
         jLabel2.setText("Pesquise o seu interesse");
 
-        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRODUTO", "MARCA", "DESCRICAO", "PRECO MAIOR", "PRECO MENOR", "PRECO IGUAL" }));
+        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRODUTO", "CATEGORIA", "MARCA", "DESCRICAO", "PRECO MAIOR", "PRECO MENOR", "PRECO IGUAL" }));
 
         tfFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,18 +387,21 @@ public class TelaPesquisa extends javax.swing.JFrame {
                 listarPorNome(tfFiltro.getText());
                 break;
             case 1:
-                listarPorMarca(tfFiltro.getText());
+                listarPorCategoria(tfFiltro.getText());
                 break;
             case 2:
-                listarPorDescricao(tfFiltro.getText());
+                listarPorMarca(tfFiltro.getText());
                 break;
             case 3:
-                listarPorPrecoMaiorQue(Double.parseDouble(tfFiltro.getText()));
+                listarPorDescricao(tfFiltro.getText());
                 break;
             case 4:
-                listarPorPrecoMenorQue(Double.parseDouble(tfFiltro.getText()));
+                listarPorPrecoMaiorQue(Double.parseDouble(tfFiltro.getText()));
                 break;
             case 5:
+                listarPorPrecoMenorQue(Double.parseDouble(tfFiltro.getText()));
+                break;
+            case 6:
                 listarPorPrecoIgualA(Double.parseDouble(tfFiltro.getText()));
                 break;
         }
