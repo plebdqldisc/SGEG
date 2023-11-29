@@ -119,8 +119,10 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelSony.setBackground(new java.awt.Color(0, 0, 102));
         labelSony.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelSony.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelSony.setText("PlayStation");
         labelSony.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        labelSony.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelSony.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelSonyMouseClicked(evt);
@@ -132,16 +134,16 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(labelSony)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelSony, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelSony)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(labelSony, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 0));
@@ -149,7 +151,9 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
 
         labelXbox.setBackground(new java.awt.Color(0, 102, 51));
         labelXbox.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelXbox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelXbox.setText("Xbox");
+        labelXbox.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         labelXbox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelXboxMouseClicked(evt);
@@ -160,24 +164,26 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
-                .addComponent(labelXbox)
-                .addGap(138, 138, 138))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelXbox, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelXbox)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(labelXbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 0, 0)));
 
         labelNintendo.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        labelNintendo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNintendo.setText("Nintendo");
+        labelNintendo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         labelNintendo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelNintendoMouseClicked(evt);
@@ -188,17 +194,17 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
-                .addComponent(labelNintendo)
-                .addGap(135, 135, 135))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelNintendo, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelNintendo)
-                .addContainerGap(413, Short.MAX_VALUE))
+                .addComponent(labelNintendo, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 153));
