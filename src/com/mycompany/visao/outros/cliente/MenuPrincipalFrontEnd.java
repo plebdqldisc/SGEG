@@ -358,10 +358,14 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void labelSonyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSonyMouseClicked
+            if(DadosTemporarios.usuarioLogado != null){
             if (Formularios.telaSony == null)
                 Formularios.telaSony = new TelaSony();
-            
+           
             Formularios.telaSony.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Você ainda não está logado. Por favor, realize o login ou o cadastro antes de pesquisar e fazer a compra!");
+        }
     }//GEN-LAST:event_labelSonyMouseClicked
 
     private void labelEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEntrarMouseClicked
@@ -395,31 +399,47 @@ public class MenuPrincipalFrontEnd extends javax.swing.JFrame {
     }//GEN-LAST:event_labelCadastrarMouseClicked
 
     private void labelXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelXboxMouseClicked
-        if (Formularios.telaXbox == null)
+        if(DadosTemporarios.usuarioLogado != null){
+            if (Formularios.telaXbox == null)
                 Formularios.telaXbox = new TelaXbox();
-            
+           
             Formularios.telaXbox.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Você ainda não está logado. Por favor, realize o login ou o cadastro antes de pesquisar e fazer a compra!");
+        }
     }//GEN-LAST:event_labelXboxMouseClicked
 
     private void labelNintendoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNintendoMouseClicked
-        if (Formularios.telaNintendo == null)
+        if(DadosTemporarios.usuarioLogado != null){
+            if (Formularios.telaNintendo == null)
                 Formularios.telaNintendo = new TelaNintendo();
-            
+           
             Formularios.telaNintendo.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Você ainda não está logado. Por favor, realize o login ou o cadastro antes de pesquisar e fazer a compra!");
+        }
     }//GEN-LAST:event_labelNintendoMouseClicked
 
     private void labelPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPesquisaMouseClicked
-        if (Formularios.telaPesquisa == null)
+        if(DadosTemporarios.usuarioLogado != null){
+            if (Formularios.telaPesquisa == null)
                 Formularios.telaPesquisa = new TelaPesquisa();
-            
+           
             Formularios.telaPesquisa.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Você ainda não está logado. Por favor, realize o login ou o cadastro antes de pesquisar e fazer a compra!");
+        }
     }//GEN-LAST:event_labelPesquisaMouseClicked
 
     private void labelSteamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSteamMouseClicked
-        if (Formularios.telaSteam == null)
+        if(DadosTemporarios.usuarioLogado != null){
+            if (Formularios.telaSteam == null)
                 Formularios.telaSteam = new TelaSteam();
-            
+           
             Formularios.telaSteam.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Você ainda não está logado. Por favor, realize o login ou o cadastro antes de pesquisar e fazer a compra!");
+        }
     }//GEN-LAST:event_labelSteamMouseClicked
 
     /**
