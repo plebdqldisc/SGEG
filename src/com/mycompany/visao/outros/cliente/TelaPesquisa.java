@@ -51,11 +51,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -76,11 +77,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -101,11 +103,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -127,11 +130,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -152,11 +156,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -177,11 +182,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -202,11 +208,12 @@ public class TelaPesquisa extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
+                String marca = resultSet.getString (3);
                 String nome =  resultSet.getString(4);
                 String descricao =  resultSet.getString(5);
                 String preco = resultSet.getString(6);
                 
-                defaultTableModel.addRow(new Object[]{nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{marca, nome, descricao, preco});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -310,11 +317,11 @@ public class TelaPesquisa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "PRODUTO", "DESCRIÇÃO", "PREÇO"
+                "MARCA", "PRODUTO", "DESCRIÇÃO", "PREÇO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -429,9 +436,10 @@ public class TelaPesquisa extends javax.swing.JFrame {
                     System.out.println(marca);
 
                     modProduto.setId(id);
-                    modProduto.setNome(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0)));
-                    modProduto.setDescricao(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 1)));
-                    modProduto.setPreco(Double.parseDouble(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 2))));
+                    modProduto.setIdMarca(Integer.parseInt(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 0))));
+                    modProduto.setNome(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 1)));
+                    modProduto.setDescricao(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 2)));
+                    modProduto.setPreco(Double.parseDouble(String.valueOf(tableProduto.getValueAt(tableProduto.getSelectedRow(), 3))));
 
                     DadosTemporarios.tempObject = (ModProduto) modProduto;
                     DadosTemporarios.categoriaProdutoVenda = categoria;

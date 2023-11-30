@@ -142,36 +142,47 @@ public class TeladeVenda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Produto");
 
         labelProduto.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelProduto.setForeground(new java.awt.Color(255, 255, 255));
         labelProduto.setText("nomeProduto");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Categoria");
 
         labelCategoriaProduto.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelCategoriaProduto.setForeground(new java.awt.Color(255, 255, 255));
         labelCategoriaProduto.setText("categoriaProduto");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Marca");
 
         labelMarcaProduto.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelMarcaProduto.setForeground(new java.awt.Color(255, 255, 255));
         labelMarcaProduto.setText("marcaProduto");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Preço");
 
         labelPreco.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        labelPreco.setForeground(new java.awt.Color(255, 255, 255));
         labelPreco.setText("precoProduto");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Descrição");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Total da Compra");
 
         labelTotalCompra.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        labelTotalCompra.setForeground(new java.awt.Color(255, 255, 255));
         labelTotalCompra.setText("totalCompra");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
@@ -182,6 +193,7 @@ public class TeladeVenda extends javax.swing.JFrame {
 
         btnComprar.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         btnComprar.setText("Comprar");
+        btnComprar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComprarActionPerformed(evt);
@@ -196,6 +208,7 @@ public class TeladeVenda extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jButton2.setText("-");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -204,6 +217,7 @@ public class TeladeVenda extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jButton4.setText("+");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
