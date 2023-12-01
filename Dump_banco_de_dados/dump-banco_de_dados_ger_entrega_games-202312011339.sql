@@ -16,38 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `carrinhocompras`
---
-
-DROP TABLE IF EXISTS `carrinhocompras`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carrinhocompras` (
-  `id` int NOT NULL,
-  `id_produto` int NOT NULL,
-  `id_pedido` int NOT NULL,
-  `quantidadeitens` double NOT NULL,
-  `precounitario` varchar(6) NOT NULL,
-  `subtotal` double NOT NULL,
-  `status` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_produto` (`id_produto`),
-  KEY `id_pedido` (`id_pedido`),
-  CONSTRAINT `carrinhocompras_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
-  CONSTRAINT `carrinhocompras_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carrinhocompras`
---
-
-LOCK TABLES `carrinhocompras` WRITE;
-/*!40000 ALTER TABLE `carrinhocompras` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carrinhocompras` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `categoria`
 --
 
@@ -68,7 +36,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'Acao','Acao desenfreada sem parar'),(2,'Fps','Tiros em primeira pessoa'),(3,'DateSim','Simulador de Encontro'),(4,'Terror','O medo empregado na tela'),(5,'Rpg','Role playing games');
+INSERT INTO `categoria` VALUES (1,'Acao','Acao desenfreada sem parar'),(2,'Fps','Tiros em primeira pessoa'),(3,'DateSim','Simulador de Encontro'),(4,'Terror','O medo empregado na tela'),(5,'Rpg','Role playing games'),(6,'Puzzle','Quebra Cabeca');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +118,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,1,'Avenida Paulis','1310','100'),(2,2,'Rua das Flores','13050','200'),(3,3,'Hollywood Blvd','90028','300'),(4,4,'Main Street','77002','400'),(5,5,'Queen Street','43256','500'),(6,4,'dadadad','23215','31312');
+INSERT INTO `endereco` VALUES (1,1,'Avenida Paulis','1310','100'),(2,2,'Rua das Flores','13050','200'),(3,3,'Hollywood Blvd','90028','300'),(4,4,'Main Street','77002','400'),(5,5,'Queen Street','43256','500'),(6,4,'dadadad','23215','31312'),(7,2,'duque de caixassss','76380','238'),(8,2,'tragelio','67643','876');
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +146,7 @@ CREATE TABLE `estado` (
 
 LOCK TABLES `estado` WRITE;
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
-INSERT INTO `estado` VALUES (1,1,'Sao Paulo','SP'),(2,1,'rio de janeiro','RJ'),(3,2,'california','CF'),(4,2,'texas','TX'),(5,3,'ontario','OT');
+INSERT INTO `estado` VALUES (1,1,'Sao Paulo','SP'),(2,1,'rio de janeiro','RJ'),(3,2,'california','CF'),(4,2,'texas','TX'),(5,3,'ontario','OT'),(6,1,'Parana','PR');
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +199,7 @@ CREATE TABLE `marca` (
 
 LOCK TABLES `marca` WRITE;
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-INSERT INTO `marca` VALUES (1,'PlayStation'),(2,'Nintendo'),(3,'Xbox');
+INSERT INTO `marca` VALUES (1,'PlayStation'),(2,'Nintendo'),(3,'Xbox'),(4,'Steam');
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +223,7 @@ CREATE TABLE `pais` (
 
 LOCK TABLES `pais` WRITE;
 /*!40000 ALTER TABLE `pais` DISABLE KEYS */;
-INSERT INTO `pais` VALUES (1,'Brasil'),(2,'EUA'),(3,'Canadá'),(4,'Reino Unido'),(5,'Austrália');
+INSERT INTO `pais` VALUES (1,'Brasil'),(2,'EUA'),(3,'Canadá'),(4,'Reino Unido'),(5,'Austrália'),(6,'Chile');
 /*!40000 ALTER TABLE `pais` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,10 +238,12 @@ CREATE TABLE `pedido` (
   `id` int NOT NULL,
   `id_cliente` int NOT NULL,
   `data_pedido` date NOT NULL,
-  `statuspedido` int NOT NULL,
-  `enderecoentrega` varchar(75) NOT NULL,
+  `id_produto` int NOT NULL,
+  `quantidade` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_cliente` (`id_cliente`),
+  KEY `fk_pedido_produto` (`id_produto`),
+  CONSTRAINT `fk_pedido_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
   CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -284,6 +254,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (1,4,'2023-11-29',4,1),(2,1,'2023-11-29',6,1),(3,1,'2023-11-29',6,1),(4,1,'2023-11-29',5,1),(5,4,'2023-11-30',3,2),(6,4,'2023-11-30',5,1),(7,4,'2023-11-30',3,2);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -353,7 +324,7 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (1,1,1,'PS Uncharted 4 A Thiefs End','Nathan Drake embarca em nova aventura',79.99),(2,2,1,'PS Call of Duty WWII','A Segunda Guerra Mundial foi...',79.99),(3,3,1,'PS Persona 3 Reload','O aguardado remake finalmente...',179.99),(4,4,1,'PS Until Dawn','O Mistério da Mansao da...',79.99);
+INSERT INTO `produto` VALUES (1,1,1,'PS Uncharted 4 A Thiefs End','Nathan Drake embarca em nova aventura',79.99),(2,2,1,'PS Call of Duty WWII','A Segunda Guerra Mundial foi...',79.99),(3,3,1,'PS Persona 3 Reload','O aguardado remake finalmente...',179.99),(4,4,1,'PS Until Dawn','O Mistério da Mansao da...',79.99),(5,2,3,'Halo Infinite','Master Chief retorna',149.99),(6,5,2,'NS Mario RPG Rmke: TLOTSS ed.padrão','Mario RPG Remake, FHD e Trilha Refeita.',329.99),(7,1,4,'Half Life','...',10),(8,1,4,'Baldur\'s Gate III','Indicado ao Goty 2023..',129.99);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-24 15:32:51
+-- Dump completed on 2023-12-01 13:39:19
